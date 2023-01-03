@@ -14,7 +14,8 @@ pub enum EventType {
 #[observable]
 pub struct InternetStuff {
     observer_map: HashMap<String, CallbackType<fn(Event<&Self>), fn(Event<&mut Self>)>>,
-    person_status_map: HashMap<String, EventType>,
+    pub person_status_map: HashMap<String, EventType>,
+    #[cfg(test)]
     output: String,
 }
 
@@ -52,6 +53,7 @@ impl InternetStuff {
         Self {
             observer_map: HashMap::new(),
             person_status_map: HashMap::new(),
+            #[cfg(test)]
             output: "".to_string(),
         }
     }
