@@ -49,17 +49,11 @@ impl Observable<EventType> for InternetStuff {
 
 impl InternetStuff {
     pub fn new() -> Self {
-        let mut val = Self {
+        Self {
             observer_map: HashMap::new(),
             person_status_map: HashMap::new(),
             output: "".to_string(),
-        };
-
-        val.on_mut(EventType::Connected, |evt| evt.src.output = evt.event);
-        val.on_mut(EventType::Disconnected, |evt| evt.src.output = evt.event);
-        val.on_mut(EventType::Waiting, |evt| evt.src.output = evt.event);
-
-        val
+        }
     }
 
     pub fn with_callback(mut self, event: EventType, f: fn(Event<&Self>)) -> Self {

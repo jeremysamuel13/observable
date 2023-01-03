@@ -78,7 +78,8 @@ pub trait ObservableInterface<
     }
 }
 
-impl<Evt, Callback, MutCallback, T: Observable<Evt, Callback, MutCallback>> ObservableInterface<Evt, Callback, MutCallback> for T
+impl<Evt, Callback, MutCallback, T: Observable<Evt, Callback, MutCallback>>
+    ObservableInterface<Evt, Callback, MutCallback> for T
 where
     Callback: Fn(Event<&Self>),
     MutCallback: Fn(Event<&mut Self>),
